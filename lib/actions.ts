@@ -1,7 +1,6 @@
 "use server"
 
 import { revalidatePath } from "next/cache"
-import { mixes } from "@/lib/catalog"
 import { checkoutAndSave } from "@/lib/store"
 import type { CardInput, Customer, PlaceOrderResult } from "@/lib/types"
 
@@ -15,7 +14,8 @@ export async function placeOrder(input: {
     revalidatePath("/")
     revalidatePath("/carrito")
     revalidatePath("/pagar")
-    for (const mix of mixes) revalidatePath(`/producto/${mix.slug}`)
+    revalidatePath("/admin")
+    for (const item of result.order.items) revalidatePath(`/producto/${item.slug}`)
   }
   return result
 }

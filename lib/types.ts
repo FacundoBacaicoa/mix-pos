@@ -84,7 +84,7 @@ export type Mix = {
   pigment: string
 }
 
-export type MixStock = Mix & { stock: number }
+export type MixStock = Mix & { stock: number; imageFile: string | null }
 
 export type CartItem = {
   slug: string
