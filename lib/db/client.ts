@@ -51,7 +51,18 @@ CREATE TABLE IF NOT EXISTS order_items (
   unit_price integer NOT NULL,
   PRIMARY KEY (order_id, position)
 );
+
+CREATE TABLE IF NOT EXISTS promos (
+  id text PRIMARY KEY,
+  image_file text NOT NULL,
+  title text NOT NULL,
+  href text,
+  position integer NOT NULL,
+  created_at text NOT NULL
+);
 `
+
+const SCHEMA_VERSION = 2
 
 export function semillaDir(): string {
   return process.env.SEMILLA_DATA_DIR || path.join(os.tmpdir(), "semilla")
@@ -61,14 +72,25 @@ export function mediaDir(): string {
   return path.join(semillaDir(), "media")
 }
 
-const globalForDb = globalThis as unknown as { semillaDb?: Promise<PGlite> }
+const globalForDb = globalThis as unknown as {
+  semillaDb?: Promise<PGlite>
+  semillaSchema?: number
+}
 
 export function getDb(): Promise<PGlite> {
   if (!globalForDb.semillaDb) globalForDb.semillaDb = openDb()
-  return globalForDb.semillaDb.then((db) => {
-    if (!db.closed) return db
-    globalForDb.semillaDb = openDb()
-    return globalForDb.semillaDb
+  return globalForDb.semillaDb.then(async (db) => {
+    if (db.closed) {
+      globalForDb.semillaSchema = undefined
+      globalForDb.semillaDb = openDb()
+      return globalForDb.semillaDb
+    }
+    if (globalForDb.semillaSchema !== SCHEMA_VERSION) {
+      await db.exec(SCHEMA)
+      await db.syncToFs()
+      globalForDb.semillaSchema = SCHEMA_VERSION
+    }
+    return db
   })
 }
 
@@ -81,6 +103,7 @@ async function openDb(): Promise<PGlite> {
   await db.exec(SCHEMA)
   await seed(db)
   await db.syncToFs()
+  globalForDb.semillaSchema = SCHEMA_VERSION
   return db
 }
 
