@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { Suspense } from "react"
-import { PageShell } from "@/components/page-shell"
+import { PageShell } from "@/components/shop/page-shell"
 import { buttonVariants } from "@/components/ui/button"
-import { formatPrice } from "@/lib/money"
-import { getOrder } from "@/lib/store"
+import { formatPrice } from "@/lib/format/money"
+import { getOrder } from "@/lib/db/orders"
 import type { Order } from "@/lib/types"
 
 export const metadata = {

@@ -1,7 +1,7 @@
 import { Suspense } from "react"
-import { CartView } from "@/components/cart-view"
-import { PageShell } from "@/components/page-shell"
-import { getMixes } from "@/lib/store"
+import { CartView } from "@/components/shop/cart-view"
+import { PageShell } from "@/components/shop/page-shell"
+import { getMixes } from "@/lib/db/products"
 
 export const metadata = {
   title: "Carrito",

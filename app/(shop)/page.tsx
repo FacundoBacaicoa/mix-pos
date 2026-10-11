@@ -1,8 +1,8 @@
 import { Suspense } from "react"
-import { CatalogFallback } from "@/components/catalog-fallback"
-import { CatalogGrid } from "@/components/catalog-grid"
-import { PageShell } from "@/components/page-shell"
-import { getMixes } from "@/lib/store"
+import { CatalogFallback } from "@/components/shop/catalog-fallback"
+import { CatalogGrid } from "@/components/shop/catalog-grid"
+import { PageShell } from "@/components/shop/page-shell"
+import { getMixes } from "@/lib/db/products"
 
 export const metadata = {
   title: { absolute: "Semilla — mixes saludables" },

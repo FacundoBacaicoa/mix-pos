@@ -1,7 +1,7 @@
 import { Suspense } from "react"
-import { CheckoutForm } from "@/components/checkout-form"
-import { PageShell } from "@/components/page-shell"
-import { getMixes } from "@/lib/store"
+import { CheckoutForm } from "@/components/shop/checkout-form"
+import { PageShell } from "@/components/shop/page-shell"
+import { getMixes } from "@/lib/db/products"
 
 export const metadata = {
   title: "Pago",

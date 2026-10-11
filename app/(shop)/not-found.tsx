@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { PageShell } from "@/components/page-shell"
+import { PageShell } from "@/components/shop/page-shell"
 import { buttonVariants } from "@/components/ui/button"
 
 export default function NotFound() {

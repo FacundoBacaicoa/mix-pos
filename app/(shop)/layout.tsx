@@ -1,7 +1,7 @@
 import type { ReactNode } from "react"
-import { CartProvider } from "@/components/cart-provider"
-import { SiteFooter } from "@/components/site-footer"
-import { SiteHeader } from "@/components/site-header"
+import { CartProvider } from "@/components/shop/cart-provider"
+import { SiteFooter } from "@/components/shop/site-footer"
+import { SiteHeader } from "@/components/shop/site-header"
 
 export default function ShopLayout({ children }: { children: ReactNode }) {
   return (

@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { PageShell } from "@/components/page-shell"
+import { PageShell } from "@/components/shop/page-shell"
 
 export default function Error({
   reset,

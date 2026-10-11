@@ -2,11 +2,11 @@ import type { Metadata } from "next"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { Suspense } from "react"
-import { BuyBox } from "@/components/buy-box"
-import { PageShell } from "@/components/page-shell"
-import { ProductPhoto } from "@/components/product-photo"
+import { BuyBox } from "@/components/shop/buy-box"
+import { PageShell } from "@/components/shop/page-shell"
+import { ProductPhoto } from "@/components/product/product-photo"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { getProduct } from "@/lib/store"
+import { getProduct } from "@/lib/db/products"
 
 export async function generateMetadata({
   params,
