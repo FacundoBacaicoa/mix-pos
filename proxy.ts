@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server"
 import type { NextRequest } from "next/server"
-import { ADMIN_COOKIE, readSession } from "@/lib/session"
+import { ADMIN_COOKIE, readSession } from "@/lib/auth/session"
 
 export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl

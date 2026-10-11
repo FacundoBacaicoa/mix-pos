@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --test lib/checkout.test.ts lib/fields.test.ts lib/password.test.ts lib/session.test.ts"
+    "test": "node --experimental-strip-types --test lib/checkout/checkout.test.ts lib/catalog/fields.test.ts lib/auth/password.test.ts lib/auth/session.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
