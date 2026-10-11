@@ -19,7 +19,13 @@ async function AdminShell({ children }: { children: ReactNode }) {
             <p className="font-serif text-2xl leading-none tracking-tight">Semilla</p>
             <p className="mt-1 text-xs text-primary-foreground/75">Administración</p>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center justify-end gap-2">
+            <Link href="/admin" className="px-2 text-sm underline-offset-4 hover:underline">
+              Mixes
+            </Link>
+            <Link href="/admin/promos" className="px-2 text-sm underline-offset-4 hover:underline">
+              Promos
+            </Link>
             <Link href="/" className="px-2 text-sm underline-offset-4 hover:underline">
               Ver tienda
             </Link>

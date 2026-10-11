@@ -90,3 +90,10 @@ export type CartItem = {
   slug: string
   quantity: number
 }
+
+export type PromoSlide = {
+  id: string
+  imageFile: string
+  title: string
+  href: string | null
+}
