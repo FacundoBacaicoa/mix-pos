@@ -2,7 +2,7 @@
 
 Tienda de mixes saludables. El cliente ve el stock del lote, arma el carrito y paga. Al confirmar, esas bolsas dejan de estar disponibles.
 
-Este corte es la vidriera: catálogo, ficha, carrito y pago. Recetas, producción y compras a proveedores quedan para después. El catálogo ya trae el stock inicial de cada mix.
+El dueño carga el catálogo desde `/admin`: nombre, precio, stock y foto. Esa dirección no está en el menú de la tienda.
 
 ## Cómo correrla
 
@@ -12,6 +12,10 @@ npm run dev
 ```
 
 Abrí [http://localhost:3000](http://localhost:3000).
+
+La administración está en [http://localhost:3000/admin](http://localhost:3000/admin).
+
+En tu máquina, si no definiste una clave, el usuario es `dueno` y la contraseña es `semilla-dev`. Para usar otra, copiá `.env.example` a `.env.local`, completá `ADMIN_PASSWORD` y `SESSION_SECRET`, y reiniciá.
 
 ```bash
 npm test
@@ -27,9 +31,11 @@ No hay cargo real. En el checkout:
 
 Cualquier otra tarjeta con número válido y vencimiento vigente también confirma.
 
-## Stock
+## Datos
 
-El stock vive en un archivo fuera del proyecto (`/tmp/semilla-store.json`) para que cada venta no reinicie el servidor de desarrollo. Si el archivo no existe, se crea con el stock inicial del catálogo.
+La base es Postgres, embebida en el proceso (PGlite). No hay que instalar un servidor. Catálogo, stock, pedidos, la cuenta del dueño y las fotos viven en la carpeta temporal del sistema (`semilla`), fuera del proyecto, para que guardar un mix no reinicie el servidor de desarrollo.
+
+La primera vez se cargan los ocho mixes de ejemplo. Después el dueño los edita desde `/admin`.
 
 Para usar otra carpeta:
 
