@@ -14,8 +14,10 @@ La lógica está en `lib`, separada por tema: `auth` (clave y sesión), `catalog
 
 ## Cómo correrla
 
+```bash
 npm install
 npm run dev
+```
 
 Abrí [http://localhost:3000](http://localhost:3000).
 
@@ -23,8 +25,10 @@ La administración está en [http://localhost:3000/admin](http://localhost:3000/
 
 En tu máquina, si no definiste una clave, el usuario es `dueno` y la contraseña es `semilla-dev`. Para usar otra, copiá `.env.example` a `.env.local`, completá `ADMIN_PASSWORD` y `SESSION_SECRET`, y reiniciá.
 
+```bash
 npm test
 npm run lint
+```
 
 ## Pago de prueba
 
@@ -43,6 +47,8 @@ La primera vez se cargan los ocho mixes de ejemplo. Después el dueño los edita
 
 Para usar otra carpeta:
 
+```bash
 SEMILLA_DATA_DIR=./data npm run dev
+```
 
 Esa carpeta no debería estar dentro de lo que observa Next, o el servidor se va a reiniciar en cada pedido.
