@@ -7,10 +7,11 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --experimental-strip-types --test lib/checkout.test.ts"
+    "test": "node --experimental-strip-types --test lib/checkout.test.ts lib/fields.test.ts lib/password.test.ts lib/session.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.9.0",
+    "@electric-sql/pglite": "^0.5.8",
     "class-variance-authority": "^0.7.1",
     "cn": "^0.4.0",
     "lucide-react": "^1.55.0",
