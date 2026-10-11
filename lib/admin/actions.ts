@@ -10,6 +10,8 @@ import { removeImage, saveImage } from "@/lib/media/images"
 import { hashPassword, verifyPassword } from "@/lib/auth/password"
 import { ADMIN_COOKIE, createSessionToken, readSession, sessionCookieOptions } from "@/lib/auth/session"
 import { deleteProductRow, insertProduct, updateProduct } from "@/lib/db/products"
+import { countPromos, deletePromoRow, insertPromo, MAX_PROMOS, shiftPromo } from "@/lib/db/promos"
+import { readPromoDraft, type PromoField } from "@/lib/promos/draft"
 
 export type LoginState = { message?: string }
 
@@ -157,4 +159,65 @@ export async function deleteProduct(slug: string) {
   await removeImage(image)
   refreshShop(slug)
   redirect("/admin?eliminado=1")
+}
+
+export type PromoFormState = {
+  message?: string
+  fieldErrors?: Partial<Record<PromoField, string>>
+}
+
+function refreshPromos() {
+  revalidatePath("/")
+  revalidatePath("/admin/promos")
+}
+
+export async function savePromo(
+  _prev: PromoFormState,
+  formData: FormData,
+): Promise<PromoFormState> {
+  await requireUser()
+  if ((await countPromos()) >= MAX_PROMOS) {
+    return { message: "El carrusel acepta hasta 12 imágenes. Sacá una para subir otra." }
+  }
+
+  const parsed = readPromoDraft({
+    title: text(formData, "title"),
+    href: text(formData, "href"),
+  })
+  const image = formData.get("image")
+  let imageError: string | undefined
+  let savedName: string | undefined
+  if (!(image instanceof File) || image.size === 0) {
+    imageError = "Elegí una imagen para la promo."
+  } else {
+    const saved = await saveImage(image)
+    if (!saved.ok) imageError = saved.message
+    else savedName = saved.name
+  }
+
+  if (!parsed.draft || imageError || !savedName) {
+    if (savedName) await removeImage(savedName)
+    return {
+      message: "Revisá los datos marcados.",
+      fieldErrors: { ...parsed.fieldErrors, ...(imageError ? { image: imageError } : {}) },
+    }
+  }
+
+  await insertPromo({ imageFile: savedName, title: parsed.draft.title, href: parsed.draft.href })
+  refreshPromos()
+  redirect("/admin/promos?guardado=1")
+}
+
+export async function deletePromo(id: string) {
+  await requireUser()
+  const image = await deletePromoRow(id)
+  await removeImage(image)
+  refreshPromos()
+  redirect("/admin/promos?eliminado=1")
+}
+
+export async function movePromo(id: string, direction: "up" | "down") {
+  await requireUser()
+  await shiftPromo(id, direction)
+  refreshPromos()
 }

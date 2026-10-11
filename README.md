@@ -2,7 +2,7 @@
 
 Tienda de mixes saludables. El cliente ve el stock del lote, arma el carrito y paga. Al confirmar, esas bolsas dejan de estar disponibles.
 
-El dueño carga el catálogo desde `/admin`: nombre, precio, stock y foto. Esa dirección no está en el menú de la tienda.
+El dueño carga el catálogo desde `/admin`: nombre, precio, stock y foto. En `/admin/promos` sube las imágenes de promos y novedades que aparecen arriba del catálogo. Esa dirección no está en el menú de la tienda.
 
 ## Dónde está cada cosa
 
@@ -10,7 +10,7 @@ Las páginas viven en `app`: `(shop)` es la tienda, `admin` es el dueño y `api`
 
 La interfaz está en `components`: `ui` son las piezas (botón, campo, tarjeta), `shop` es la tienda, `admin` son los formularios del dueño, y `product` es la foto y el cartel de stock, que usan las dos pantallas.
 
-La lógica está en `lib`, separada por tema: `auth` (clave y sesión), `catalog` (mixes de ejemplo y validación del formulario), `checkout` (reglas del pago, sin base de datos), `db` (Postgres, productos y pedidos), `media` (fotos) y `format` (precios y el texto del stock).
+La lógica está en `lib`, separada por tema: `auth` (clave y sesión), `catalog` (mixes de ejemplo y validación del formulario), `promos` (validación de cada imagen del carrusel), `checkout` (reglas del pago, sin base de datos), `db` (Postgres, productos, pedidos y promos), `media` (fotos) y `format` (precios y el texto del stock).
 
 ## Cómo correrla
 
