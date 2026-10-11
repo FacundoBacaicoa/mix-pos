@@ -1,6 +1,6 @@
 import Link from "next/link"
 import { LoginForm } from "@/components/admin/login-form"
-import { devLoginHint } from "@/lib/password"
+import { devLoginHint } from "@/lib/auth/password"
 
 export const metadata = {
   title: "Entrar",

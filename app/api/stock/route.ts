@@ -1,4 +1,4 @@
-import { getStockMap } from "@/lib/store"
+import { getStockMap } from "@/lib/db/products"
 
 export async function GET() {
   const stock = await getStockMap()

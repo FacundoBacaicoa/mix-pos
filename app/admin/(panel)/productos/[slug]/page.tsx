@@ -3,8 +3,8 @@ import { notFound } from "next/navigation"
 import { Suspense } from "react"
 import { DeleteProductButton } from "@/components/admin/delete-product-button"
 import { ProductForm } from "@/components/admin/product-form"
-import { deleteProduct } from "@/lib/admin-actions"
-import { getProduct } from "@/lib/store"
+import { deleteProduct } from "@/lib/admin/actions"
+import { getProduct } from "@/lib/db/products"
 
 export const metadata = {
   title: "Editar mix",

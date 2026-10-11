@@ -1,5 +1,5 @@
 import { connection } from "next/server"
-import { mediaType, readImage } from "@/lib/media"
+import { mediaType, readImage } from "@/lib/media/images"
 
 export async function GET(
   _request: Request,

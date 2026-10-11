@@ -1,7 +1,7 @@
 "use client"
 
 import { useActionState } from "react"
-import { loginAction, type LoginState } from "@/lib/admin-actions"
+import { loginAction, type LoginState } from "@/lib/admin/actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"

@@ -1,10 +1,10 @@
 import Link from "next/link"
 import { Suspense } from "react"
-import { ProductPhoto } from "@/components/product-photo"
-import { StockBadge } from "@/components/stock-badge"
+import { ProductPhoto } from "@/components/product/product-photo"
+import { StockBadge } from "@/components/product/stock-badge"
 import { buttonVariants } from "@/components/ui/button"
-import { formatPrice } from "@/lib/money"
-import { getMixes } from "@/lib/store"
+import { formatPrice } from "@/lib/format/money"
+import { getMixes } from "@/lib/db/products"
 
 export const metadata = {
   title: "Mixes",

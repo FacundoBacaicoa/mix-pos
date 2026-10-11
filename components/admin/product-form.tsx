@@ -1,7 +1,7 @@
 "use client"
 
 import { useActionState, useState, type ReactNode } from "react"
-import { saveProduct, type ProductFormState } from "@/lib/admin-actions"
+import { saveProduct, type ProductFormState } from "@/lib/admin/actions"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"

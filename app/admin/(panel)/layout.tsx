@@ -1,9 +1,9 @@
 import Link from "next/link"
 import { Suspense, type ReactNode } from "react"
 import { redirect } from "next/navigation"
-import { logoutAction } from "@/lib/admin-actions"
+import { logoutAction } from "@/lib/admin/actions"
 import { Button } from "@/components/ui/button"
-import { getSession } from "@/lib/current-session"
+import { getSession } from "@/lib/auth/current-session"
 
 export const instant = false
 
